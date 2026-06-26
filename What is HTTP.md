@@ -15,7 +15,7 @@ Browser <--------------(response) Server
 <div align="center">
 <br>
 you type:<br>
-**http://example.com**<br>
+`http://example.com` <br>
             ↓<br>
 Browser sends HTTP Request<br>
             ↓<br>
