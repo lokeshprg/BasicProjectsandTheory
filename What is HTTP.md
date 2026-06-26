@@ -69,9 +69,9 @@ The server replies.
 HTTP/1.1 200 OK
 Content-Type: text/html
 
-'''<html>
+```<html>
 ...
-</html>'''
+</html>```
 
 *Meaning:*
 - ***HTTP/1.1***: Protocol version.
@@ -85,12 +85,12 @@ Broweser (HTTP request)---> Server Processes Request (HTTP response)----> Browse
 ## Structure of an HTTP Request
 Every HTTP has several parts
 
-'''GET /index.html HTTP/1.1
+```GET /index.html HTTP/1.1
 Host: example.com
 User-AgentL: Chrome
 Accept: text/html
 
-(Body)'''
+(Body)```
 ### Request Line
 Contains:
 - Method
@@ -101,12 +101,12 @@ Contains:
 Extra Information.
 
 **Example :-**
-'''Host: example.com'''
+```Host: example.com```
 
 Tells the browser which website is requested.
 
 **Example :-**
-'''User-Agent: Chrome'''
+```User-Agent: Chrome```
 
 Tells the server which browser is sending the request.
 
@@ -114,20 +114,20 @@ Tells the server which browser is sending the request.
 Used maily for sending data.
 
 **Example :-**
-'''username=lokesh
-password=1234'''
+```username=lokesh
+password=1234```
 
 Usually used with POST requests.
 
 ## Structure of an HTTP Response
 
-'''HTTP/1.1 200 OK
+```HTTP/1.1 200 OK
 Content-Type: text/html
 Content-Length: 120
 
 <html>
 ...
-</html>'''
+</html>```
 
 Contains:
 - Status Line
@@ -150,12 +150,12 @@ HTTP provides different methods depending on the action you want to perform.
 ### GET 
 Requests data.
 **Example :-**
-''' GET /temprature'''
+```GET /temprature```
 
 ### POST
 Sends data.
 **Example :-**
-'''POST /login'''
+```POST /login```
 
 username = Lokesh
 password = 1234
@@ -164,12 +164,12 @@ password = 1234
 Every response contains a status code.
 
 ### 1xx - Informational
-'''100 Continue'''
+```100 Continue```
 *Server says:*
 continue sending data.
 
 ### 2xx - Success
-'''200 OK'''
+```200 OK```
 Everything worked.
 
 **Other examples:**
@@ -178,29 +178,29 @@ Everything worked.
 
 ### 3xx - Redirection
 **Example :-**
-'''301 Moved Permanently'''
+```301 Moved Permanently```
 The resource has moved to a new URL.
 
 ### 4xx - Client Errors
 **Example :-**
-'''400 Bad Request'''
+```400 Bad Request```
 The request is malformed.
 
-'''401 Unauthorised'''
+```401 Unauthorised```
 Authentication is required.
 
-'''403 Forbidden'''
+```403 Forbidden```
 Access is denied.
 
-'''404 Not Found'''
+```404 Not Found```
 The requested page doesn't exist.
 
 ### 5xx - Server Errors
 **Examples :-**
-'''500 Internal Server Error'''
+```500 Internal Server Error```
 Something went wrong on the server.
 
-'''503 Service Unavailable'''
+```503 Service Unavailable```
 The server is temporarily unavailable.
 
 ## HTTP Headers
@@ -221,7 +221,7 @@ Date
 Cache-Control
 
 **Example :-**
-'''Content-Type: text/html'''
+```Content-Type: text/html```
 The browser knows to interpret the response as an HTML page.
 
 ## HTTP Versions
