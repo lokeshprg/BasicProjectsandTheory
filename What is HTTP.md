@@ -72,7 +72,7 @@ Content-Type: text/html
 ```<html>
 ...
 </html>
-'''
+```
 *Meaning:*
 - ***HTTP/1.1***: Protocol version.
 - ***200***: Success
