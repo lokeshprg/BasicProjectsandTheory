@@ -219,15 +219,21 @@ Authentication is required.
 ```
 Access is denied.
 
-```404 Not Found```
+```
+404 Not Found
+```
 The requested page doesn't exist.
 
 ### 5xx - Server Errors
 **Examples :-**
-```500 Internal Server Error```
+```
+500 Internal Server Error
+```
 Something went wrong on the server.
 
-```503 Service Unavailable```
+```
+503 Service Unavailable
+```
 The server is temporarily unavailable.
 
 ## HTTP Headers
@@ -248,7 +254,9 @@ Date
 Cache-Control
 
 **Example :-**
-```Content-Type: text/html```
+```
+Content-Type: text/html
+```
 The browser knows to interpret the response as an HTML page.
 
 ## HTTP Versions
