@@ -8,7 +8,7 @@ Whenever you open a website, your browser uses HTTP to request the webpage from 
 ***HTTP is a set of rules that defines how a client and a server communicate over the internet or a local network.***
 
 ## How HTTP Works
-Browser (request)----------> Server
+Browser (request)----------> Server<br>
 Browser <--------------(response) Server
 
 *Example :-*
