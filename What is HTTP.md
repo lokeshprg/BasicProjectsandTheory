@@ -13,18 +13,19 @@ Browser <--------------(response) Server
 
 *Example :-*
 <div align="center">
-you type:
-**http://example.com**
-            ↓
-Browser sends HTTP Request
-            ↓
-Server receives request
-            ↓
-Server processes request
-            ↓
-Server sends HTTP response
-            ↓
-Browser Displays webpage
+<br>
+you type:<br>
+**http://example.com**<br>
+            ↓<br>
+Browser sends HTTP Request<br>
+            ↓<br>
+Server receives request<br>
+            ↓<br>
+Server processes request<br>
+            ↓<br>
+Server sends HTTP response<br>
+            ↓<br>
+Browser Displays webpage<br>
 </div>
 
 ## Client and Server
