@@ -1,57 +1,43 @@
-import pandas as pd
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Conv2D, Flatten, MaxPooling2D
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import numpy as np
+import cv2
 import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+mnist = tf.keras.datasets.mnist
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train, x_test = x_train/255.0, x_test/255.0
+x_train = x_train.reshape(-1, 28, 28, 1)
+x_test = x_test.reshape(-1, 28, 28, 1)
 
-# Step 1: Create & Load Dataset
-data = {
-    'Size_sqft':[1500, 1800, 2400, np.nan, 3000, 1200, 2100, 1900, 2800, 1600],
-    'Bedrooms': [3, 4, 3, 4, 5, 2, 3, 3, 4, 3],
-    'Price_USD':[300000, 360000, 470000, 410000, 590000, 240000, 400000, 380000, 540000, 320000]
-}
+model = Sequential([
+    Conv2D(32, (3, 3), activation='relu', 
+           input_shape=(28, 28, 1)),
+           MaxPooling2D((2, 2)),
+           Flatten(),
+           Dense(64, activation='relu'),
+           Dense(10, activation='softmax')
+])
 
-df = pd.DataFrame(data)
-print("---Raw Dataset---")
-print(df.head(), '\n')
+model.compile(optimizer='adam', 
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy'])
 
-# Step 2: Data Cleaning
-print("Missing values per column:\n", df.isnull().sum())
-df['Size_sqft'] = df['Size_sqft'].fillna(df['Size_sqft'].mean())
-print("Cleaned Data")
-print(df.head(), '\n')
+model.summary()
 
-# Step 3: Exploratory Data Analysis (EDA)
-print("---Summary Statistics---")
-print(df.describe(), "\n")
+model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))
 
-# Step 4: Data Visualization
-plt.scatter(df['Size_sqft'], df['Price_USD'], color='blue', label='Data Points')
-plt.title("House Price vs Size")
-plt.xlabel('Size(sqft)')
-plt.ylabel('Price($)')
-plt.grid(True)
+model.save('edge_ai_model.h5')
+
+loaded_model = tf.keras.models.load_model('edge_ai_model.h5')
+
+sample_image = x_test[0]
+sample_image_reshaped = sample_image.reshape(1, 28, 28, 1)
+
+prediction = loaded_model.predict(sample_image_reshaped)
+predicted_class = np.argmax(prediction)
+
+plt.imshow(sample_image.reshape(28,28), cmap='gray')
+plt.title(f"predicted Class: {predicted_class}")
 plt.show()
-
-X = df[['Size_sqft', 'Bedrooms']]
-y= df['Price_USD']
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.2, random_state = 42)
-
-# Initialize and train a linear regression model
-model = LinearRegression()
-model.fit(X_train, y_train)
-
-# Make predicitons using the test data
-predictions = model.predict(X_test)
-
-# Evaluate model performance using Mean Squred Error
-mse = mean_squared_error(y_test, predictions)
-print(f"Model training complete.")
-print(f"Mean Squared error on Test Set: {mse:.2f}")
-
-# Predict the price of a new house (2000 sqft, 3 bedrooms)
-new_house = pd.DataFrame([[2000, 3]], columns=['Size_sqft', 'Bedrooms'])
-predicted_price = model.predict(new_house)
-print(f"Predicted price for 2000 sqft 3-bed house : ${predicted_price[0]:,.2f}")
-
