@@ -13,22 +13,16 @@ while True:
         print(fingerUp)
         cnt.led(fingerUp)
         if fingerUp ==[0,0,0,0,0]:
-            cv2.putText(frame, "Finger Count:0", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(frame, "Motor Reverse", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
         elif fingerUp==[0,1,0,0,0]:
-            cv2.putText(frame, "Finger Count:1", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
-        elif fingerUp==[0,1,1,0,0]:
-            cv2.putText(frame, "Finger Count:2", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
-        elif fingerUp==[0,1,1,1,0]:
-            cv2.putText(frame, "Finger Count:3", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(frame, "Motor: Stop", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
         elif fingerUp==[0,1,1,1,1]:
-            cv2.putText(frame, "Finger Count:4", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
-        elif fingerUp==[1,1,1,1,1]:
-            cv2.putText(frame, "Finger Count:5", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(frame, "Motor: Forward", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 1, cv2.LINE_AA)
         
-        cv2.imshow("frame", frame)
-        key = cv2.waitKey(1)
-        if key==ord('q'):
-            break
+    cv2.imshow("frame", frame)
+    key = cv2.waitKey(1)
+    if key==ord('q'):
+        break
 
 video.release()
 cv2.destroyAllWindows()
