@@ -976,3 +976,44 @@ new_house = pd.DataFrame([[2000, 3]], columns=['Size_sqft, 'Bedrooms'])
 predicted_price = model.predict(new_house)
 print(f"Predicted price for 2000 sqft 3-bed house : ${predicted_price[0]:,.2f}")
 ```
+
+# Head Movement Controlled Servo Motor Using AI + Arduino
+This project demonstrates hands-free control of a servo metro using head movements, combining Python, Mediapipe, OpenCV and Arduino. The servo rotates left, right, or centers based on your head direction, showcasing a simple Human_Computer Interaction (HCI) sytsem.
+## Features
+- Real-time head tracking using MediaPipe face Mesh
+- Left, Right and Center head detection
+- Serial communication between Python and Arduino
+- Smooth servo motor control
+- Low cost and easy to build project
+- ideal for robotics, assistive technology, and gesture controled devices
+## Hardware Requirements
+- Arduino Uno/Nano/Compatible board
+- SG90 Servo Motor
+- USB Cable 
+- Jumper Wire
+## Software Requirements 
+- Python 3.x
+- OpenCV
+- MediaPipe
+- PySerial
+- Arduino IDE
+## How it Works
+1. Webcam captures your face in real time.
+2. Python + Mediapipe detects facial landmarks and calcultes head direction.
+3. Python sends a serial command (L,R,C) to Arduino
+4. Arduino rotates the servo based on the command:
+    L -> Servo rotates left
+    R -> Servo rotates right
+    C -> Servo Centers
+## Project Setup
+1. Arduino
+    Connect the servo motor:
+        - Signal -> Pin 11
+        - VCC -> 5V
+        - GND -> GND
+2. Python
+    install Dependencies:
+    pip install opencv-python mediapipe pyserial
+
+# Edge Impulse
+Edge Impulse is a leading cloud-based Machine Learning operations (MLOps) platform tailored for developing TinyML (embedded machine learning) systems.
